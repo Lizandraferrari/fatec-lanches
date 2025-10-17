@@ -6,6 +6,7 @@ interface InputProps extends TextInputProps {
 }
 
 export default function Input({ label, ...props }: InputProps) {
+  
   return (
     <View style={styles.wrapper}>
       {label && <Text style={styles.label}>{label}</Text>}
