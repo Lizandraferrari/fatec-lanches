@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <View style={styles.fullscreen}>
-        <Stack screenOptions={{ headerShown: false }} />
+        <Stack initialRouteName="(auth)/login" screenOptions={{ headerShown: false }} />
       </View>
     </SafeAreaProvider>
   );
