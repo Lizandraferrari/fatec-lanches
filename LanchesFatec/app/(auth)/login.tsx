@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import Input from '../components/Input';
 import BlueBtn from '../components/BlueBtn';
 import styles from '../styles/authStyle';
+import NavBar from '../components/NavBar';
 
 export default function LoginRoute() {
   const router = useRouter();
@@ -30,6 +31,7 @@ export default function LoginRoute() {
           <Text style={styles.link}>Faça seu cadastro</Text>
         </TouchableOpacity>
       </View>
+      <NavBar />
     </View>
   );
 }
