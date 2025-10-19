@@ -97,13 +97,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     backgroundColor: '#DDD',
-    },
+  },
   buttonText: {
     fontSize: 18,
     color: '#333',
   },
   quantity: {
-    fontSize: 18,
+    fontSize: 16,
     backgroundColor: '#fff',
     paddingVertical: 5,
     paddingHorizontal: 10,

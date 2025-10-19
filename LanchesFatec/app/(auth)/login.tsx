@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '../components/Input';
 import BlueBtn from '../components/BlueBtn';
@@ -12,8 +12,7 @@ export default function LoginRoute() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Fatec</Text>
-        <Text style={styles.headerSubtitle}>Faculdade de Tecnologia</Text>
+      <Image source={require('../../assets/logofatec.png')} />
       </View>
 
       <View style={styles.content}>

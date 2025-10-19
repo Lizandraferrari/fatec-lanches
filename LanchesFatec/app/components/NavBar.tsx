@@ -31,16 +31,16 @@ export default function NavBar() {
 
 const styles = StyleSheet.create({
   navbar: {
-    backgroundColor: '#b00000',
-    height: 60,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around', 
-    alignItems: 'center',           
-    position: 'absolute',
     bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    backgroundColor: '#b00000',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
-  icon: {
+   icon: {
     alignItems: 'center', 
   },
   image: {
