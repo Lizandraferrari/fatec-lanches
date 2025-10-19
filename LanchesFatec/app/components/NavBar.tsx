@@ -1,9 +1,12 @@
+import { useRouter } from 'expo-router';
 import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 
 export default function NavBar() {
+    const router = useRouter();
   return (
     <View style={styles.navbar}>
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+      onPress={ () =>(router.push('/salgados'))}>
         <Image source={require('../../assets/fork-knife.png')} style={styles.image} />
         <Text style={styles.text}>Lanches</Text>
       </TouchableOpacity>

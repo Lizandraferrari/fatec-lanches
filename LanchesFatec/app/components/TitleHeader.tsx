@@ -9,20 +9,17 @@ export default function TitleHeader( { title , subtitle }: TitleHeaderTypes ){
     return (
       <View style={styles.header}>
         <Text style={styles.headerTitle}>{title}</Text>
-        <Text style={styles.headerSubtitle}>{subtitle}</Text>
+      {subtitle && <Text style={styles.headerSubtitle}>{subtitle}</Text>}
       </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: '#b00000',
-        alignItems: 'flex-start',
-        paddingHorizontal: 20,
+        alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 25,
+        padding: 30,
         marginHorizontal: 0,
-        height: 80,
         width: '100%',
         alignSelf: 'stretch',
         position: 'relative',
@@ -30,13 +27,13 @@ const styles = StyleSheet.create({
         right: 0,
     },
     headerTitle: {
-        color: '#fff',
-        fontSize: 32,
+        color: '#005C6D',
+        fontSize: 36,
         fontWeight: 'bold',
     },
     headerSubtitle: {
-        color: '#fff',
-        fontSize: 12,
+        color: '#000',
+        fontSize: 16,
         marginTop: 2,
     },
 })
