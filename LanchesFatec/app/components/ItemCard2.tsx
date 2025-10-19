@@ -19,7 +19,7 @@ const ItemCard: React.FC<ItemCardProps> = () => {
     <View style={styles.card}>
       {/* Imagem do produto */}
       <Image
-        source={require('../../Imagem/prato.jpeg')} // Imagem do item
+        source={require('../../assets/empada.jpeg')}
         style={styles.image}
       />
       
