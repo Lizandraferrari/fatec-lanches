@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,
-    marginHorizontal: 50,
+    marginHorizontal: 36,
   },
   label: {
-    fontSize: 16,
+    fontSize: 20,
     marginRight: 10,
   },
   pickerWrapper: {

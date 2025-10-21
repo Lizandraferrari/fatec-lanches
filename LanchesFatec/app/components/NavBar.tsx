@@ -11,7 +11,8 @@ export default function NavBar() {
         <Text style={styles.text}>Lanches</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+            onPress={ () =>(router.push('/cart'))}>
         <Image source={require('../../assets/cup-straw.png')} style={styles.image} />
         <Text style={styles.text}>Bebidas</Text>
       </TouchableOpacity>
