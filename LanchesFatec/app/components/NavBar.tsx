@@ -22,7 +22,8 @@ export default function NavBar() {
         <Text style={styles.text}>Bomboniere</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.icon}>
+      <TouchableOpacity style={styles.icon}
+            onPress={ () =>(router.push('/profile'))}>
         <Image source={require('../../assets/person.png')} style={styles.image} />
         <Text style={styles.text}>Perfil</Text>
       </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import BlueBtn from './BlueBtn';
+import BlueBtn from './Btn';
 
 // Tipagem para o estado de quantidade
 interface ItemCardProps {
