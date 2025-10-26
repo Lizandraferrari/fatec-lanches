@@ -28,19 +28,19 @@ export default function ItemCard({ nome, preco }: ItemCardProps) {
       <View style={styles.line}>
         <Text style={styles.price}>R$ {preco.toFixed(2).replace('.', ',')}</Text>
 
-        <View style={styles.quantityContainer}>
-          <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-            <Text style={styles.buttonText}>-</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.quantity}>{quantity}</Text>
-
-          <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-            <Text style={styles.buttonText}>+</Text>
-          </TouchableOpacity>
+        <View>
+          <Text>Quantidade:</Text>
+          <View style={styles.quantityContainer}>
+            <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
+              <Text style={styles.buttonText}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.quantity}>{quantity}</Text>
+            <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
+              <Text style={styles.buttonText}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-
       <BlueBtn>Adicionar</BlueBtn>
     </View>
   );
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F0F0',
     borderRadius: 10,
     padding: 15,
-    width: 200,
+    width: 260,
     alignItems: 'center',
     margin: 5,
     shadowColor: '#000',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    gap: 10
+    gap: 25
   },
 
   image: {
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
   quantityButton: {
     borderRadius: 5,
     paddingHorizontal: 10,
-    paddingVertical: 5,
     backgroundColor: '#DDD',
   },
   buttonText: {
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
   quantity: {
     fontSize: 16,
     backgroundColor: '#fff',
-    paddingVertical: 5,
+    paddingVertical: 1,
     paddingHorizontal: 10,
     margin: 0,
   },

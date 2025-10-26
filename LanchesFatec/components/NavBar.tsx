@@ -52,15 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-
-    // 🌑 Sombra voltada para cima
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -3 }, // sombra pra cima (y negativo)
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 10, // Android
   },
-
   icon: {
     alignItems: 'center',
   },
@@ -91,4 +83,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
   },
-});
+})
