@@ -12,7 +12,7 @@ export default function NavBar() {
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.icon}
-            onPress={ () =>(router.push('/cart'))}>
+            onPress={ () =>(router.push('/pixPayment'))}>
         <Image source={require('../../assets/cup-straw.png')} style={styles.image} />
         <Text style={styles.text}>Bebidas</Text>
       </TouchableOpacity>

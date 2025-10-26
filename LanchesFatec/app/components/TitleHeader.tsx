@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignSelf: 'stretch',
         position: 'relative',
+        marginTop: 30,
         left: 0,
         right: 0,
     },
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     },
     headerSubtitle: {
         color: '#000',
-        fontSize: 16,
+        fontSize: 20,
         marginTop: 2,
     },
 })
