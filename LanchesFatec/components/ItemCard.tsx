@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import BlueBtn from './Btn';
 
-// Tipagem para o estado de quantidade
 interface ItemCardProps {
   initialQuantity?: number;
   nome: string;
@@ -20,7 +19,7 @@ export default function ItemCard({ nome, preco }: ItemCardProps) {
   return (
     <View style={styles.card}>
       <Image
-        source={require('../../assets/empada.jpeg')}
+        source={require('../assets/empada.jpeg')}
         style={styles.image}
       />
 

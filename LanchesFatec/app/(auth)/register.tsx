@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import Input from '../components/Input';
-import BlueBtn from '../components/Btn';
+import Input from '../../components/Input';
+import BlueBtn from '../../components/Btn';
 import styles from '../styles/authStyle'
 
 export default function RegisterRoute() {

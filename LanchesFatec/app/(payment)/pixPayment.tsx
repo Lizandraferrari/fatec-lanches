@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "../components/BasePage";
+import BasePage from "../../components/BasePage";
 import Octicons from '@expo/vector-icons/Octicons';
 import { useRouter } from "expo-router";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';

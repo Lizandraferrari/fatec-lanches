@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "./components/BasePage";
-import Btn from "./components/Btn";
+import BasePage from "../components/BasePage";
+import Btn from "../components/Btn";
 
 export default function Profile() {
     const user = {

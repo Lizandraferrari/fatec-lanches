@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "../components/BasePage";
-import Btn from "../components/Btn";
-import Input from "../components/Input";
+import BasePage from "../../components/BasePage";
+import Btn from "../../components/Btn";
+import Input from "../../components/Input";
 import Octicons from '@expo/vector-icons/Octicons';
 import { useRouter } from "expo-router";
 

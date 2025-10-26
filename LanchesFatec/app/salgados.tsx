@@ -1,6 +1,6 @@
 import { View, FlatList, StyleSheet } from 'react-native';
-import ItemCard from './components/ItemCard';
-import CategoriesBase from './components/CategoriesBase';
+import ItemCard from '../components/ItemCard';
+import CategoriesBase from '../components/CategoriesBase';
 
 export default function Salgados() {
   const itens = [

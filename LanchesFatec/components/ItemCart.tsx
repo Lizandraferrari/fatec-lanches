@@ -20,7 +20,7 @@ export default function ItemCart({ nome, preco, image, onRemove }: ItemCartProps
   return (
     <View style={styles.card}>
       <Image
-        source={image || require('../../assets/empada.jpeg')}
+        source={image || require('../assets/empada.jpeg')}
         style={styles.image}
       />
 

@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import BasePage from "./components/BasePage";
-import ItemCart from "./components/ItemCart";
-import Seletor from "./components/Seletor";
-import BlueBtn from "./components/Btn";
+import BasePage from "../components/BasePage";
+import ItemCart from "../components/ItemCart";
+import Seletor from "../components/Seletor";
+import BlueBtn from "../components/Btn";
 
 const itens = [
     { id: '1', nome: 'Lanche de pernil com queijo' , preco: 6.00},
