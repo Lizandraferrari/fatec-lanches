@@ -1,6 +1,8 @@
 import { useRouter } from 'expo-router';
 import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function NavBar() {
   const router = useRouter();
@@ -9,22 +11,22 @@ export default function NavBar() {
     <View style={styles.container}>
       <View style={styles.navbar}>
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/salgados')}>
-          <Image source={require('../assets/fork-knife.png')} style={styles.image} />
+          <MaterialCommunityIcons name="silverware-fork-knife" size={24} color="white" />
           <Text style={styles.text}>Lanches</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icon} onPress={() => router.push('/pixPayment')}>
-          <Image source={require('../assets/cup-straw.png')} style={styles.image} />
+        <TouchableOpacity style={styles.icon} onPress={() => router.push('/')}>
+          <SimpleLineIcons name="cup" size={24} color="white" />
           <Text style={styles.text}>Bebidas</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icon}>
-          <Image source={require('../assets/cake.png')} style={styles.image} />
+          <MaterialCommunityIcons name="cake-variant-outline" size={24} color="white" />
           <Text style={styles.text}>Bomboniere</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/profile')}>
-          <Image source={require('../assets/person.png')} style={styles.image} />
+          <Ionicons name="person-outline" size={24} color="white" />
           <Text style={styles.text}>Perfil</Text>
         </TouchableOpacity>
       </View>
@@ -33,7 +35,7 @@ export default function NavBar() {
         style={styles.cartButton}
         onPress={() => router.push('/cart')}
       >
-          <Image source={require('../assets/cart.png')} style={styles.image} />
+        <MaterialCommunityIcons name="cart-outline" size={24} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -77,8 +79,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 5, 
-    shadowColor: '#000', 
+    elevation: 5,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,

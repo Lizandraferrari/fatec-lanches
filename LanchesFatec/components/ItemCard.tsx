@@ -69,9 +69,10 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 8,
+    width: 200,
+    height: 200,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     marginBottom: 10,
   },
   title: {
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   price: {
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 10,
     fontWeight: 'light',
     textDecorationLine: 'underline',
