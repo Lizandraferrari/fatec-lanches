@@ -1,55 +1,58 @@
-## Get started
+# 📱 Fatec Lanches
 
-1. Install dependencies
+Projeto Interdisciplinar desenvolvido no curso *Desenvolvimento de Software Multiplataforma* da **Fatec Mauá**.
 
-   ```bash
+<br>
+
+---
+
+## 🥪 Sobre o projeto  
+O projeto **Fatec Lanches** tem como objetivo facilitar a compra de itens na cantina.  
+Pensando nisso, foi desenvolvido um aplicativo móvel que permite aos usuários realizar pedidos, efetuar o pagamento e retirar os produtos pessoalmente.
+
+<br>
+
+---
+
+## 🤖 Tecnologias  
+Projeto desenvolvido com:  
+- **Front-end:** [React Native](https://reactnative.dev/) com [Expo](https://expo.dev/), utilizando **TypeScript** e **Axios** para consumo da API;  
+- **Back-end:** [Express.js](https://expressjs.com/) com **JavaScript**, banco de dados **MongoDB**, e hospedagem no [Render](https://render.com/).
+
+O desenvolvimento estilistico do front-end se baseou nas diretrizes do [Guia de Estilo do Centro Paula Souza](https://cps.sp.gov.br/guia-estilo/), prezando por preservar a identidade visual da instituição.
+
+Código-fonte do back-end disponível em: [VictorRojasHub/fatecLanchesBack](https://github.com/VictorRojasHub/fatecLanchesBack)
+
+<br>
+
+---
+
+## ⚙️ Como rodar o projeto  
+### 🔧 Requisitos  
+- [Node.js](https://nodejs.org/)  
+- npm  
+- Expo (opcional, para executar globalmente):  
+  ```bash
+  npm install -g expo-cli
+  ```
+<br>
+
+### 🚀 Instalação
+  ```bash
+   git clone https://github.com/Lizandraferrari/fatec-lanches.git
+   ```
+  ```bash
+   cd fatec-lanches/LanchesFatec
    npm install
+   npm start
    ```
+<br>
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
-1.2 Instalando o Expo CLI
-npm install -g expo-cli
-
-1.3 Criando um novo projeto Expo com TypeScript
-npx create-expo-app MeuApp --template
-Após a criação:
-cd MeuApp
-npm start
+## 🧑‍💻 Participantes
+- [Lizandra de Jesus Ferrari](https://github.com/Lizandraferrari)  
+- [Victor Rojas](https://github.com/VictorRojasHub)  
+- [Felipe Day](https://github.com/FelipeDay)
+- [Otávio Barbosa](https://github.com/OffTAVs)
+- [Victor Nery Eduardinho Reis](https://github.com/fatecvictor1)
