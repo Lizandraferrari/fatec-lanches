@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '../../components/Input';
 import BlueBtn from '../../components/Btn';
 import styles from '../styles/authStyle'
+import api from '../../utils/api';
 
 export default function RegisterRoute() {
   const router = useRouter();
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
 
-  function handleRegister() {
-    if (!email || !name || !password || !confirm) {
+  const onChangeNameHandler = (nome: string) => {
+    setNome(nome);
+  };
+
+  const onChangePasswordHandler = (password: string) => {
+    setPassword(password)
+  }
+
+  const onChangeEmailHandler = (email: string) => {
+    setEmail(email)
+  }
+
+  const onChangeConfirmHandler = (confirm: string) => {
+    setConfirm(confirm)
+  }
+
+  async function handleRegister() {
+    if (!email || !nome || !password || !confirm) {
       Alert.alert('Atenção', 'Preencha todos os campos.');
       return;
     }
@@ -22,16 +39,33 @@ export default function RegisterRoute() {
       return;
     }
 
-    Alert.alert('Sucesso', 'Cadastro realizado.', [
-      { text: 'OK', onPress: () => router.replace('/login') },
-    ]);
+    try {
+
+      const response = await api.post('/usuarios/registrar', {
+        nome: nome,
+        email: email,
+        senha: password
+      })
+
+      const message = response.data.mensagem || 'Cadastro realizado com sucesso!';
+
+      if (response.status === 201) {
+        Alert.alert('Sucesso', message, [
+          { text: 'Realize seu Login', onPress: () => router.replace('/login') },
+        ]);
+      }
+    }
+    catch (error) {
+      console.log(error);
+      Alert.alert('Erro', 'Não foi possível realizar o cadastro.');
+
+    }
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Fatec</Text>
-        <Text style={styles.headerSubtitle}>Faculdade de Tecnologia</Text>
+        <Image source={require('../../assets/logofatec.png')} />
       </View>
 
       <View style={styles.content}>
@@ -39,10 +73,10 @@ export default function RegisterRoute() {
 
         <View>
           <Text style={styles.label}>Faça seu cadastro:</Text>
-          <Input label="E-mail" placeholder="fulano.silva@fatec.sp.gov.br" value={email} onChangeText={setEmail} />
-          <Input label="Nome" placeholder="Fulano da Silva" value={name} onChangeText={setName} />
-          <Input label="Senha" placeholder="Senha" secureTextEntry value={password} onChangeText={setPassword} />
-          <Input label="Confirmar Senha" placeholder="Confirmar Senha" secureTextEntry value={confirm} onChangeText={setConfirm} />
+          <Input label="E-mail" placeholder="fulano.silva@fatec.sp.gov.br" value={email} onChangeText={onChangeEmailHandler} />
+          <Input label="Nome" placeholder="Fulano da Silva" value={nome} onChangeText={onChangeNameHandler} />
+          <Input label="Senha" placeholder="Senha" secureTextEntry value={password} onChangeText={onChangePasswordHandler} />
+          <Input label="Confirmar Senha" placeholder="Confirmar Senha" secureTextEntry value={confirm} onChangeText={onChangeConfirmHandler} />
 
           <BlueBtn onPress={() => { handleRegister(); }}>Cadastrar</BlueBtn>
         </View>

@@ -5,7 +5,7 @@ import Btn from "../components/Btn";
 export default function Profile() {
     const user = {
         nome: 'João Silva',
-        email: 'joao.silva@example.com',
+        email: 'fulano.silva@fatec.sp.gov.br',
         fatec: 'Fatec Mauá'
     }
 
