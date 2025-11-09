@@ -1,18 +1,59 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '../../components/Input';
 import BlueBtn from '../../components/Btn';
 import styles from '../styles/authStyle';
 import NavBar from '../../components/NavBar';
+import api from '@/utils/api';
 
 export default function LoginRoute() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onChangePasswordHandler = (password: string) => {
+    setPassword(password)
+  }
+
+  const onChangeEmailHandler = (email: string) => {
+    setEmail(email)
+  }
+
+  async function handleLogin() {
+    if (!email || !password) {
+      Alert.alert('Atenção', 'Preencha todos os campos.');
+      return;
+    }
+
+    try {
+      const response = await api.post('/usuarios/login', {
+        email: email,
+        senha: password
+      })
+
+      if (response.status === 200 || response.status === 201) {
+        const token = response.data?.token;
+        // instalar biblioteca pro token e fazer a logica pra bota
+        router.replace('/menu');
+      }
+      else if (response.status === 404 || response.status === 401) {
+        Alert.alert('Erro', 'Email ou senha incorretos.');
+      } else {
+        Alert.alert('Erro', 'Não foi possível realizar o login.');
+      }
+
+    }
+    catch (error) {
+      console.log(error);
+      Alert.alert('Erro', 'Não foi possível realizar o login.');
+    }
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <Image source={require('../../assets/logofatec.png')} />
+        <Image source={require('../../assets/logofatec.png')} />
       </View>
 
       <View style={styles.content}>
@@ -20,10 +61,9 @@ export default function LoginRoute() {
 
         <View>
           <Text style={styles.label}>Faça seu login:</Text>
-          <Input label="Email:" placeholder="fulano@email.com" />
-          <Input label="Senha:" placeholder="Senha" secureTextEntry />
-
-          <BlueBtn onPress={() => { /* implementar login */ }}>Entrar</BlueBtn>
+          <Input label="E-mail" placeholder="fulano.silva@fatec.sp.gov.br" value={email} onChangeText={onChangeEmailHandler} />
+          <Input label="Senha" placeholder="Senha" secureTextEntry value={password} onChangeText={onChangePasswordHandler} />
+          <BlueBtn onPress={() => { handleLogin() }}>Entrar</BlueBtn>
         </View>
 
         <TouchableOpacity onPress={() => router.push('/register')}>

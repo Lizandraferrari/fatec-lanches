@@ -6,6 +6,8 @@ Projeto Interdisciplinar desenvolvido no curso *Desenvolvimento de Software Mult
 
 ---
 
+<br>
+
 ## 🥪 Sobre o projeto  
 O projeto **Fatec Lanches** tem como objetivo facilitar a compra de itens na cantina.  
 Pensando nisso, foi desenvolvido um aplicativo móvel que permite aos usuários realizar pedidos, efetuar o pagamento e retirar os produtos pessoalmente.
@@ -13,6 +15,8 @@ Pensando nisso, foi desenvolvido um aplicativo móvel que permite aos usuários 
 <br>
 
 ---
+
+<br>
 
 ## 🤖 Tecnologias  
 Projeto desenvolvido com:  
@@ -26,6 +30,8 @@ Código-fonte do back-end disponível em: [VictorRojasHub/fatecLanchesBack](http
 <br>
 
 ---
+
+<br>
 
 ## ⚙️ Como rodar o projeto  
 ### 🔧 Requisitos  
@@ -49,6 +55,8 @@ Código-fonte do back-end disponível em: [VictorRojasHub/fatecLanchesBack](http
 <br>
 
 ---
+
+<br>
 
 ## 🧑‍💻 Participantes
 - [Lizandra de Jesus Ferrari](https://github.com/Lizandraferrari)  
