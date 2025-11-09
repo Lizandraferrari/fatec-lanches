@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '../../components/Input';

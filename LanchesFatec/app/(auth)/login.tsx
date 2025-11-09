@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '../../components/Input';
@@ -32,7 +32,7 @@ export default function LoginRoute() {
         senha: password
       })
 
-      if (response.status === 200 || response.status === 201) {
+      if (response.status === 200) {
         const token = response.data?.token;
         // instalar biblioteca pro token e fazer a logica pra bota
         router.replace('/menu');
