@@ -1,25 +1,70 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import BlueBtn from './Btn';
+import { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import Btn from './Btn';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface ItemCardProps {
-  initialQuantity?: number;
+  quantity?: number;
   nome: string;
   preco: number;
+  id: string;
+  image: string;
 }
 
-export default function ItemCard({ nome, preco }: ItemCardProps) {
+export default function ItemCard({ nome, preco, id, image }: ItemCardProps) {
   const [quantity, setQuantity] = useState<number>(0);
+  const CART = '@fatec-lanches:cart';
 
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () => {
     if (quantity > 0) setQuantity(quantity - 1);
   };
 
+  async function addCart() {
+    if (quantity <= 0) {
+      Alert.alert('Atenção', 'Selecione ao menos 1 item.');
+      return;
+    }
+
+    const itemToAdd: ItemCardProps = {
+      id,
+      image,
+      preco,
+      nome,
+      quantity,
+    }
+
+    try {
+      const raw = await AsyncStorage.getItem(CART)
+      const item = raw ? JSON.parse(raw) as Array<any> : []
+
+      const itemSearch = item.findIndex((i: any) => i.id === id)
+      if (itemSearch >= 0) {
+        item[itemSearch].quantity = (item[itemSearch].quantity || 0) + quantity
+      } else {
+        item.push(itemToAdd);
+      }
+
+      await AsyncStorage.setItem(CART, JSON.stringify(item));
+      setQuantity(0)
+      //console.log('/nCarrinho: ', item,'/n')
+      Alert.alert('Sucesso', 'Item adicionado ao carrinho.')
+    } catch (error) {
+      console.log('erro ao add:', error)
+      Alert.alert('Erro', 'Não foi possível adicionar ao carrinho.')
+    }
+  }
+  /*
+  async function clearCart() {
+    const raw = await AsyncStorage.getItem(CART)
+    const item = raw ? JSON.parse(raw) as Array<any> : []
+    await AsyncStorage.removeItem('CART')
+  }
+*/
   return (
-    <View style={styles.card}>
+    <View style={styles.card} key={id}>
       <Image
-        source={require('../assets/empada.jpeg')}
+        source={{ uri: image }}
         style={styles.image}
       />
 
@@ -41,7 +86,7 @@ export default function ItemCard({ nome, preco }: ItemCardProps) {
           </View>
         </View>
       </View>
-      <BlueBtn>Adicionar</BlueBtn>
+      <Btn onPress={addCart}>Adicionar</Btn>
     </View>
   );
 };
