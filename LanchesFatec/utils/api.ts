@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://fateclanchesback.onrender.com',
+  baseURL: /*'https://fateclanchesback.onrender.com',*/'http://192.168.18.8:3000',
   headers: {
     'Content-Type': 'application/json',
   },
