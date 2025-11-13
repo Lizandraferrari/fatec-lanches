@@ -1,26 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 interface ItemCartProps {
   nome: string;
   preco: number;
-  image?: any;
+  quantity: number;
+  imagemUrl?: any;
   onRemove?: () => void;
+  onUpdateQuantity: (newQuantity: number) => void;
 }
 
-export default function ItemCart({ nome, preco, image, onRemove }: ItemCartProps) {
-  const [quantity, setQuantity] = useState(1);
+export default function ItemCart({ nome, preco, imagemUrl, onRemove, quantity, onUpdateQuantity }: ItemCartProps) {
+  const [qty, setQty] = useState(quantity);
 
-  const increaseQuantity = () => setQuantity(quantity + 1);
+  useEffect(() => {
+    setQty(quantity);
+  }, [quantity]);
+
+  useEffect(() => {
+    onUpdateQuantity(qty);
+  }, [qty]);
+
+  const increaseQuantity = () => setQty(qty + 1);
   const decreaseQuantity = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
+    if (qty > 1) setQty(qty - 1);
   };
 
   return (
     <View style={styles.card}>
       <Image
-        source={image || require('../assets/empada.jpeg')}
+        source={{ uri: imagemUrl }}
         style={styles.image}
       />
 
@@ -31,21 +41,24 @@ export default function ItemCart({ nome, preco, image, onRemove }: ItemCartProps
 
         <Text style={styles.title}>{nome}</Text>
 
-        <View style={styles.quantityRow}>
-        <Text style={styles.quantityLabel}>Quantidade:</Text>
-          <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-            <Text style={styles.quantityButtonText}>−</Text>
-          </TouchableOpacity>
+        <View style={styles.quantityContainer}>
+          <Text style={styles.quantityLabel}>Quantidade:</Text>
 
-          <Text style={styles.quantityText}>{quantity}</Text>
-
-          <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-            <Text style={styles.quantityButtonText}>＋</Text>
-          </TouchableOpacity>
+          <View style={styles.quantityRow}>
+            <TouchableOpacity onPress={decreaseQuantity} style={[styles.quantityButton, { paddingHorizontal: 10 }]}
+            >
+              <Text style={styles.quantityButtonText}>−</Text>
+            </TouchableOpacity>
+            <Text style={styles.quantityText}>{qty}</Text>
+            <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
+              <Text style={styles.quantityButtonText}>＋</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
+
         <Text style={styles.total}>
-          Total: R$ {(preco * quantity).toFixed(2).replace('.', ',')}
+          Total: R$ {(preco * qty).toFixed(2).replace('.', ',')}
         </Text>
       </View>
     </View>
@@ -84,12 +97,12 @@ const styles = StyleSheet.create({
   removeButton: {
     position: 'absolute',
     right: 0,
-    top: -25,
+    top: -10,
     zIndex: 2,
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 16,
     marginBottom: 2,
     textAlign: 'center',
   },
@@ -97,11 +110,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'thin',
   },
-  quantityRow: {
-    flexDirection: 'row',
+  quantityContainer: {
     alignItems: 'center',
     marginVertical: 4,
   },
+
+  quantityRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 4,
+  },
+
   quantityButton: {
     backgroundColor: '#ddd',
     paddingHorizontal: 6,
@@ -114,7 +133,6 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   quantityText: {
-
     paddingHorizontal: 8,
     paddingVertical: 3,
     fontSize: 14,

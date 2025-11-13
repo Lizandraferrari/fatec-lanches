@@ -1,15 +1,10 @@
-import { View, FlatList, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import { FlatList, StyleSheet, ActivityIndicator, Text } from 'react-native';
 import { useEffect, useState } from 'react';
 import api from '@/utils/api';
 import ItemCard from './ItemCard';
 import BasePage from './BasePage';
+import { Produto } from './types/produto';
 
-interface Produto {
-  _id: string;
-  nome: string;
-  preco: number;
-  imagemUrl: string;
-}
 
 interface CategoriesBaseProps {
   title: string;
@@ -48,7 +43,12 @@ export default function CategoriesBase({ title, subtitle, categoria }: Categorie
           data={item}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => (
-            <ItemCard id={item._id} image={item.imagemUrl} nome={item.nome} preco={item.preco} />
+            <ItemCard
+              key={item._id}
+              _id={item._id}
+              imagemUrl={item.imagemUrl}
+              nome={item.nome}
+              preco={item.preco} />
           )}
           showsVerticalScrollIndicator={false}
         />
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   emptyText: {
     textAlign: 'center',
     fontSize: 16,
-    color: '#666',
+    color: '#666666',
     marginTop: 20,
   },
 });

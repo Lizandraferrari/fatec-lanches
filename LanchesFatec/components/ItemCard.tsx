@@ -7,11 +7,11 @@ interface ItemCardProps {
   quantity?: number;
   nome: string;
   preco: number;
-  id: string;
-  image: string;
+  _id: string;
+  imagemUrl: string;
 }
 
-export default function ItemCard({ nome, preco, id, image }: ItemCardProps) {
+export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps) {
   const [quantity, setQuantity] = useState<number>(0);
   const CART = '@fatec-lanches:cart';
 
@@ -27,8 +27,8 @@ export default function ItemCard({ nome, preco, id, image }: ItemCardProps) {
     }
 
     const itemToAdd: ItemCardProps = {
-      id,
-      image,
+      _id,
+      imagemUrl,
       preco,
       nome,
       quantity,
@@ -38,7 +38,7 @@ export default function ItemCard({ nome, preco, id, image }: ItemCardProps) {
       const raw = await AsyncStorage.getItem(CART)
       const item = raw ? JSON.parse(raw) as Array<any> : []
 
-      const itemSearch = item.findIndex((i: any) => i.id === id)
+      const itemSearch = item.findIndex((i: any) => i._id === _id)
       if (itemSearch >= 0) {
         item[itemSearch].quantity = (item[itemSearch].quantity || 0) + quantity
       } else {
@@ -62,9 +62,9 @@ export default function ItemCard({ nome, preco, id, image }: ItemCardProps) {
   }
 */
   return (
-    <View style={styles.card} key={id}>
+    <View style={styles.card} key={_id}>
       <Image
-        source={{ uri: image }}
+        source={{ uri: imagemUrl }}
         style={styles.image}
       />
 
