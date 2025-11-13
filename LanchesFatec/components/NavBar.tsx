@@ -15,12 +15,12 @@ export default function NavBar() {
           <Text style={styles.text}>Lanches</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icon} onPress={() => router.push('/')}>
+        <TouchableOpacity style={styles.icon} onPress={() => router.push('/bebidas')}>
           <SimpleLineIcons name="cup" size={24} color="white" />
           <Text style={styles.text}>Bebidas</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity style={styles.icon} onPress={() => router.push('/bomboniere')}>
           <MaterialCommunityIcons name="cake-variant-outline" size={24} color="white" />
           <Text style={styles.text}>Bomboniere</Text>
         </TouchableOpacity>
