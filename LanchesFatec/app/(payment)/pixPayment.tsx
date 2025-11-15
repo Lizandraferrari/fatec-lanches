@@ -6,12 +6,21 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import * as Clipboard from 'expo-clipboard';
 import { useEffect, useState } from "react";
 import TextFont from '@/components/TextFont';
+import { createStaticPix } from 'pix-utils';
 
 export default function Profile() {
     const router = useRouter()
     const total = 20
-    const pix = '00020126360014BR.GOV.BCB.PIX0114+55119999999952040000530398654045.005802BR5925Nome do Recebedor6009Sao Paulo61080540900062070503***6304ABCD';
 
+    const generatePix = createStaticPix({
+        pixKey: 'lizandra.ferrari@fatec.sp.gov.br',
+        isTransactionUnique: true,
+        merchantName: 'Lanches Fatec',
+        merchantCity: 'MAUA',
+        transactionAmount: total,
+    }).throwIfError();
+
+    const pix = generatePix.toBRCode();
     const copyToClipboard = async () => {
         await Clipboard.setStringAsync(pix);
     };
