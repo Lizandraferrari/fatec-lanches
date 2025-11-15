@@ -6,11 +6,16 @@ import BlueBtn from '../../components/Btn';
 import styles from '../styles/authStyle';
 import NavBar from '../../components/NavBar';
 import api from '@/utils/api';
+import * as SecureStore from 'expo-secure-store';
 
 export default function LoginRoute() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function saveToken(token: string) {
+    await SecureStore.setItemAsync('token' , token)
+  }
 
   const onChangePasswordHandler = (password: string) => {
     setPassword(password)
@@ -33,8 +38,8 @@ export default function LoginRoute() {
       })
 
       if (response.status === 200) {
-        const token = response.data?.token;
-        // instalar biblioteca pro token e fazer a logica pra bota
+        const token = response.data.token
+        saveToken(token)
         router.replace('/menu');
       }
       else if (response.status === 404 || response.status === 401) {
