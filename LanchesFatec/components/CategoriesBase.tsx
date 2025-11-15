@@ -1,10 +1,11 @@
-import { FlatList, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import { FlatList, StyleSheet, ActivityIndicator, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import api from '@/utils/api';
 import ItemCard from './ItemCard';
 import BasePage from './BasePage';
 import { Produto } from './types/produto';
-
+import TextFont from '@/components/TextFont';
+import Seletor from './Seletor';
 
 interface CategoriesBaseProps {
   title: string;
@@ -37,21 +38,24 @@ export default function CategoriesBase({ title, subtitle, categoria }: Categorie
       {loading ? (
         <ActivityIndicator size="large" color="#B20000" />
       ) : item.length === 0 ? (
-        <Text style={styles.emptyText}>Nenhum item encontrado</Text>
+        <TextFont style={styles.emptyText}>Nenhum item encontrado</TextFont>
       ) : (
-        <FlatList
-          data={item}
-          keyExtractor={(item) => item._id}
-          renderItem={({ item }) => (
-            <ItemCard
-              key={item._id}
-              _id={item._id}
-              imagemUrl={item.imagemUrl}
-              nome={item.nome}
-              preco={item.preco} />
-          )}
-          showsVerticalScrollIndicator={false}
-        />
+        <View>
+          <Seletor label={'Ordenar Por: '} options={['Menor Preço']} />
+          <FlatList
+            data={item}
+            keyExtractor={(item) => item._id}
+            renderItem={({ item }) => (
+              <ItemCard
+                key={item._id}
+                _id={item._id}
+                imagemUrl={item.imagemUrl}
+                nome={item.nome}
+                preco={item.preco} />
+            )}
+            showsVerticalScrollIndicator={false}
+          ></FlatList>
+        </View>
       )}
     </BasePage>
   );

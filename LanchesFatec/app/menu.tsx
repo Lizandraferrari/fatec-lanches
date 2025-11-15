@@ -1,10 +1,11 @@
 import { useRouter } from 'expo-router';
-import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import TextFont from '@/components/TextFont';
 
-import BasePage from "../components/BasePage";
+import BasePage from "@/components/BasePage";
 
 export default function Menu() {
     const router = useRouter()
@@ -14,22 +15,22 @@ export default function Menu() {
             <View style={styles.menu}>
                 <TouchableOpacity style={styles.icon} onPress={() => router.push('/salgados')}>
                     <MaterialCommunityIcons name="silverware-fork-knife" size={88} color="black" />
-                    <Text style={styles.text}>Lanches</Text>
+                    <TextFont style={styles.text}>Lanches</TextFont>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.icon} onPress={() => router.push('/bebidas')}>
                     <SimpleLineIcons name="cup" size={88} color="black" />
-                    <Text style={styles.text}>Bebidas</Text>
+                    <TextFont style={styles.text}>Bebidas</TextFont>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.icon} onPress={() => router.push('/bomboniere')}>
                     <MaterialCommunityIcons name="cake-variant-outline" size={88} color="black" />
-                    <Text style={styles.text}>Bomboniere</Text>
+                    <TextFont style={styles.text}>Bomboniere</TextFont>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.icon} onPress={() => router.push('/profile')}>
                     <Ionicons name="person-outline" size={88} color="black" />
-                    <Text style={styles.text}>Perfil</Text>
+                    <TextFont style={styles.text}>Perfil</TextFont>
                 </TouchableOpacity>
             </View>
         </BasePage>
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
     text: {
         color: '#000',
         fontSize: 28,
-        fontWeight: '600',
+        fontFamily: 'Roboto_700Bold',
     }
 });

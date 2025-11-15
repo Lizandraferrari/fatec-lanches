@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { TouchableOpacity, StyleSheet, TouchableOpacityProps, ViewStyle } from 'react-native';
+import TextFont from '@/components/TextFont';
 
 type ButtonVariant = 'blue' | 'red' | 'cyan';
 
@@ -26,7 +27,7 @@ export default function Btn({ children, style, variant = 'blue', ...props }: Btn
       style={[styles.button, { backgroundColor: backgroundColors[variant] }, style]}
       {...props}
     >
-      <Text style={[styles.buttonText, { color: textColors[variant] }]}>{children}</Text>
+      <TextFont style={[styles.buttonText, { color: textColors[variant] }]}>{children}</TextFont>
     </TouchableOpacity>
   );
 }
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: '400', 
+    fontFamily: 'Roboto_400Regular',
   },
 });

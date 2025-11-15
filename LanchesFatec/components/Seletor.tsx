@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { useState } from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import { Ionicons } from '@expo/vector-icons';
+import TextFont from '@/components/TextFont';
 
 interface SeletorProps {
   label: string;
   options: string[];
   defaultValue?: string;
   onChange?: (value: string) => void;
+  style?: any; 
 }
 
-export default function Seletor({ label, options, defaultValue, onChange }: SeletorProps) {
+export default function Seletor({ label, options, defaultValue, onChange, style }: SeletorProps) {
   const [selected, setSelected] = useState(defaultValue || options[0] || '');
 
   const handleChange = (value: string) => {
@@ -21,8 +23,8 @@ export default function Seletor({ label, options, defaultValue, onChange }: Sele
   const items = options.map((option) => ({ label: option, value: option }));
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
+    <View style={[styles.container , style]}>
+      <TextFont style={styles.label}>{label}</TextFont>
 
       <View style={styles.pickerWrapper}>
         <RNPickerSelect
@@ -47,11 +49,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,
-    marginHorizontal: 36,
   },
   label: {
     fontSize: 20,
-    marginRight: 10,
+    marginRight: 8,
   },
   pickerWrapper: {
     flex: 1,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     color: '#000',
     fontSize: 16,
-    fontWeight: 'thin',
+    fontFamily: 'Roboto_300Light',
     justifyContent: 'center',
   },
 });

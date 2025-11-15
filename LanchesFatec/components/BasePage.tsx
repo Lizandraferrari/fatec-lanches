@@ -1,10 +1,11 @@
-import { View, StyleSheet, Text, ActivityIndicator, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
 import TitleHeader from "./TitleHeader";
 import NavBar from "./NavBar";
 import * as SecureStore from 'expo-secure-store';
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
+import TextFont from '@/components/TextFont';
 
 interface BasePageProps {
   title: string
@@ -63,7 +64,7 @@ export default function BasePage({ title, subtitle, children }: BasePageProps) {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => router.replace('/login')}>
-          <Text style={styles.link}>Deslogado! Caso não seja redirecionado automaticamente, clique aqui.</Text>
+          <TextFont style={styles.link}>Deslogado! Caso não seja redirecionado automaticamente, clique aqui.</TextFont>
         </TouchableOpacity>
       </View>
     )

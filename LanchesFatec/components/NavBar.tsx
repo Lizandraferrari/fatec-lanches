@@ -1,8 +1,9 @@
 import { useRouter } from 'expo-router';
-import { Text, StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import TextFont from '@/components/TextFont';
 
 export default function NavBar() {
   const router = useRouter();
@@ -11,23 +12,23 @@ export default function NavBar() {
     <View style={styles.container}>
       <View style={styles.navbar}>
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/salgados')}>
-          <MaterialCommunityIcons name="silverware-fork-knife" size={24} color="white" />
-          <Text style={styles.text}>Lanches</Text>
+          <MaterialCommunityIcons name="silverware-fork-knife" size={26} color="white" />
+          <TextFont style={styles.text}>Lanches</TextFont>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/bebidas')}>
-          <SimpleLineIcons name="cup" size={24} color="white" />
-          <Text style={styles.text}>Bebidas</Text>
+          <SimpleLineIcons name="cup" size={26} color="white" />
+          <TextFont style={styles.text}>Bebidas</TextFont>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/bomboniere')}>
-          <MaterialCommunityIcons name="cake-variant-outline" size={24} color="white" />
-          <Text style={styles.text}>Bomboniere</Text>
+          <MaterialCommunityIcons name="cake-variant-outline" size={26} color="white" />
+          <TextFont style={styles.text}>Bomboniere</TextFont>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.icon} onPress={() => router.push('/profile')}>
-          <Ionicons name="person-outline" size={24} color="white" />
-          <Text style={styles.text}>Perfil</Text>
+          <Ionicons name="person-outline" size={26} color="white" />
+          <TextFont style={styles.text}>Perfil</TextFont>
         </TouchableOpacity>
       </View>
 
@@ -58,16 +59,11 @@ const styles = StyleSheet.create({
   icon: {
     alignItems: 'center',
   },
-  image: {
-    width: 24,
-    height: 24,
-    marginBottom: 3,
-    tintColor: '#fff',
-  },
   text: {
     color: '#fff',
+    marginTop: 4,
     fontSize: 12,
-    fontWeight: '500',
+    fontFamily: 'Roboto_700Bold',
   },
   cartButton: {
     position: 'absolute',

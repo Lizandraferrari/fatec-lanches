@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { FlatList, StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { FlatList, StyleSheet, View, ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import BasePage from "../components/BasePage";
-import ItemCart from "../components/ItemCart";
-import Seletor from "../components/Seletor";
-import BlueBtn from "../components/Btn";
-import { Produto } from "../components/types/produto";
+import BasePage from "@/components/BasePage";
+import ItemCart from "@/components/ItemCart";
+import Seletor from "@/components/Seletor";
+import BlueBtn from "@/components/Btn";
+import { Produto } from "@/components/types/produto";
+import TextFont from '@/components/TextFont';
 
 const CART_KEY = '@fatec-lanches:cart';
 
@@ -78,7 +79,7 @@ export default function Cart() {
         {loading ? (
           <ActivityIndicator size="large" color="#B20000" />
         ) : cartItems.length === 0 ? (
-          <Text style={styles.empty}>Seu carrinho está vazio, adicione algum item!</Text>
+          <TextFont style={styles.empty}>Seu carrinho está vazio, adicione algum item!</TextFont>
         ) : (
           <FlatList
             data={cartItems}
@@ -98,14 +99,15 @@ export default function Cart() {
           />
         )}
       </View>
+        <View style={styles.info}>
+      <TextFont style={styles.sumPrice}>Total: R$ {total.toFixed(2).replace('.', ',')}</TextFont>
 
-      <Text style={styles.sumPrice}>Total: R$ {total.toFixed(2).replace('.', ',')}</Text>
-
-      <Seletor label="Método de Pagamento:" options={['Pix', 'Cartão de Crédito']} />
+      <Seletor style={{marginHorizontal: 28}} label="Método de Pagamento:" options={['Pix', 'Cartão de Crédito']} />
 
       <BlueBtn onPress={() => { console.log(cartItems) }}>
         Finalizar Pedido
       </BlueBtn>
+      </View>
     </BasePage>
   );
 }
@@ -113,9 +115,8 @@ export default function Cart() {
 const styles = StyleSheet.create({
   sumPrice: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Roboto_700Bold',
     color: '#B20000',
-    margin: 16,
     textDecorationLine: 'underline',
   },
   empty: {
@@ -125,4 +126,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#666666',
   },
+  info: {
+    alignItems: 'center',
+    gap: 8,
+    marginVertical: 12,
+  }
 });

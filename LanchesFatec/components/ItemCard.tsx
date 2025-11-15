@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import Btn from './Btn';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import TextFont from '@/components/TextFont';
 
 interface ItemCardProps {
   quantity?: number;
@@ -68,20 +69,20 @@ export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps)
         style={styles.image}
       />
 
-      <Text style={styles.title}>{nome}</Text>
+      <TextFont style={styles.title}>{nome}</TextFont>
 
       <View style={styles.line}>
-        <Text style={styles.price}>R$ {preco.toFixed(2).replace('.', ',')}</Text>
+        <TextFont style={styles.price}>R$ {preco.toFixed(2).replace('.', ',')}</TextFont>
 
-        <View>
-          <Text>Quantidade:</Text>
+        <View style={{alignItems:'center'}}>
+          <TextFont>Quantidade:</TextFont>
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-              <Text style={styles.buttonText}>-</Text>
+              <TextFont style={styles.buttonText}>-</TextFont>
             </TouchableOpacity>
-            <Text style={styles.quantity}>{quantity}</Text>
+            <TextFont style={styles.quantity}>{quantity}</TextFont>
             <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-              <Text style={styles.buttonText}>+</Text>
+              <TextFont style={styles.buttonText}>+</TextFont>
             </TouchableOpacity>
           </View>
         </View>
@@ -121,8 +122,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontFamily: 'Roboto_700Bold',
     marginBottom: 5,
     textAlign: 'center',
   },
@@ -145,6 +146,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     color: '#333',
+    fontFamily: 'Roboto_700Bold',
   },
   quantity: {
     fontSize: 16,

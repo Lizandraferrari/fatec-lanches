@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, Alert, Image } from 'react-native';
+import { View, TouchableOpacity, Alert, Image } from 'react-native';
 import { useRouter } from 'expo-router';
-import Input from '../../components/Input';
-import BlueBtn from '../../components/Btn';
+import Input from '@/components/Input';
+import BlueBtn from '@/components/Btn';
 import styles from '../styles/authStyle'
-import api from '../../utils/api';
+import api from '@/utils/api';
+import TextFont from '@/components/TextFont';
 
 export default function RegisterRoute() {
   const router = useRouter();
@@ -65,14 +66,14 @@ export default function RegisterRoute() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../../assets/logofatec.png')} />
+        <Image source={require('@/assets/logofatec.png')} />
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Lanches Fatec</Text>
+        <TextFont style={styles.title}>Lanches Fatec</TextFont>
 
         <View>
-          <Text style={styles.label}>Faça seu cadastro:</Text>
+          <TextFont style={styles.label}>Faça seu cadastro:</TextFont>
           <Input label="E-mail" placeholder="fulano.silva@fatec.sp.gov.br" value={email} onChangeText={onChangeEmailHandler} />
           <Input label="Nome" placeholder="Fulano da Silva" value={nome} onChangeText={onChangeNameHandler} />
           <Input label="Senha" placeholder="Senha" secureTextEntry value={password} onChangeText={onChangePasswordHandler} />
@@ -82,7 +83,7 @@ export default function RegisterRoute() {
         </View>
 
         <TouchableOpacity onPress={() => router.replace('/login')}>
-          <Text style={styles.link}>Fazer login</Text>
+          <TextFont style={styles.link}>Fazer login</TextFont>
         </TouchableOpacity>
       </View>
     </View>

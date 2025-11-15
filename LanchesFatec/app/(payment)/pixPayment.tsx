@@ -1,10 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "../../components/BasePage";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import BasePage from "@/components/BasePage";
 import Octicons from '@expo/vector-icons/Octicons';
 import { useRouter } from "expo-router";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import * as Clipboard from 'expo-clipboard';
 import { useEffect, useState } from "react";
+import TextFont from '@/components/TextFont';
 
 export default function Profile() {
     const router = useRouter()
@@ -35,41 +36,35 @@ export default function Profile() {
         <BasePage title="Pagamento" subtitle="Insira seus Dados">
             <View style={styles.options}>
                 <View style={styles.line}>
-                    <Text style={styles.price}>Total: R${total.toFixed(2).replace('.', ',')}</Text>
+                    <TextFont style={styles.price}>Total: R${total.toFixed(2).replace('.', ',')}</TextFont>
                     <TouchableOpacity onPress={() => (router.push('/cart'))}>
-                        <Text style={{ fontSize: 20 }}>Voltar <Octicons name="undo" size={20} /></Text>
+                        <TextFont style={{ fontSize: 20 }}>Voltar <Octicons name="undo" size={20} /></TextFont>
                     </TouchableOpacity>
                 </View>
                 {
-                timeLeft > 0.0 ? (<View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontSize: 20 }}>Clique no código pix para copiar:</Text>
-                    <View style={styles.box}>
-                        <TouchableOpacity onPress={copyToClipboard}>
-                            <MaterialCommunityIcons style={styles.icon} name="clipboard-multiple-outline" size={20} color="black" />
-                            <Text>
-                                {pix}
-                            </Text>
-                        </TouchableOpacity>
+                    timeLeft > 0.0 ? (<View style={{ alignItems: 'center' }}>
+                        <TextFont style={styles.copy}>Clique no código pix para copiar:</TextFont>
+                        <View style={styles.box}>
+                            <TouchableOpacity onPress={copyToClipboard}>
+                                <MaterialCommunityIcons style={styles.icon} name="clipboard-multiple-outline" size={20} color="black" />
+                                <TextFont>
+                                    {pix}
+                                </TextFont>
+                            </TouchableOpacity>
+                        </View>
+                        <TextFont style={styles.pix}>Tempo restante para pagamento: {time}</TextFont>
                     </View>
-                    <Text style={styles.pix}>Tempo restante para pagamento: {time}</Text>
-                </View>
-                ) : (
-                 <View>
-                    <Text style={styles.fail}>QR code expirado!</Text>
-                </View>
-                 )}
+                    ) : (
+                        <View>
+                            <TextFont style={styles.fail}>QR code expirado!</TextFont>
+                        </View>
+                    )}
             </View>
         </BasePage>
     );
 }
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 5,
-        textAlign: 'center',
-    },
     options: {
         gap: 8,
         margin: 10,
@@ -78,7 +73,7 @@ const styles = StyleSheet.create({
     price: {
         color: '#b00000',
         fontSize: 24,
-        fontWeight: 'semibold',
+        fontFamily: 'Roboto_700Bold',
         textDecorationLine: 'underline',
     },
     box: {
@@ -101,14 +96,20 @@ const styles = StyleSheet.create({
         position: 'absolute',
         margin: -25,
     },
+    copy: {
+        fontSize: 20,
+        fontFamily: 'Roboto_400Regular',
+    },
     pix: {
         color: '#b00000',
         fontSize: 16,
+        fontFamily: 'Roboto_400Regular',
+
     },
     fail: {
         color: '#b00000',
         fontSize: 24,
-        fontWeight: 'bold',
+        fontFamily: 'Roboto_700Bold',
         marginTop: 100,
     }
 });

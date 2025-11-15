@@ -1,9 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "../../components/BasePage";
-import Btn from "../../components/Btn";
-import Input from "../../components/Input";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import BasePage from "@/components/BasePage";
+import Btn from "@/components/Btn";
+import Input from "@/components/Input";
 import Octicons from '@expo/vector-icons/Octicons';
 import { useRouter } from "expo-router";
+import TextFont from '@/components/TextFont';
 
 export default function Profile() {
     const router = useRouter();
@@ -13,9 +14,9 @@ export default function Profile() {
         <BasePage title="Pagamento" subtitle="Insira seus Dados">
             <View style={styles.options}>
                 <View style={styles.line}>
-                    <Text style={styles.price}>Total: R${total.toFixed(2).replace('.', ',')}</Text>
+                    <TextFont style={styles.price}>Total: R${total.toFixed(2).replace('.', ',')}</TextFont>
                     <TouchableOpacity onPress={ () =>(router.push('/cart'))}>
-                        <Text style={{fontSize:20}}>Voltar <Octicons name="undo" size={20} color="black" /></Text>
+                        <TextFont style={{fontSize:20}}>Voltar <Octicons name="undo" size={20} color="black" /></TextFont>
                     </TouchableOpacity>
                 </View>
                 <Input label="Número do Cartão" placeholder="1234 5678 9012 3456" keyboardType="numeric" />
@@ -31,12 +32,6 @@ export default function Profile() {
 
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 5,
-        textAlign: 'center',
-    },
     email: {
         fontSize: 16,
         marginBottom: 10,
@@ -56,7 +51,7 @@ const styles = StyleSheet.create({
     price: {
         color: '#b00000',
         fontSize: 24,
-        fontWeight: 'semibold',
+        fontFamily: 'Roboto_700Bold',
         textDecorationLine: 'underline',
     },
     line: {

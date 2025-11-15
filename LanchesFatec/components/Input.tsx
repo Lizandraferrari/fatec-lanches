@@ -1,5 +1,6 @@
 
-import { View, Text , TextInput , StyleSheet , TextInputProps} from 'react-native';
+import { View, TextInput , StyleSheet , TextInputProps} from 'react-native';
+import TextFont from '@/components/TextFont';
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -9,7 +10,7 @@ export default function Input({ label, ...props }: InputProps) {
   
   return (
     <View style={styles.wrapper}>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {label && <TextFont style={styles.label}>{label}</TextFont>}
       <TextInput
         style={styles.input}
         placeholderTextColor="#999"
@@ -25,15 +26,16 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   label: {
-    fontSize: 15,
     color: '#222',
     marginBottom: 4,
+    marginLeft: 12
   },
   input: {
     width: 250,
+    fontFamily: 'Roboto_300Light',
     backgroundColor: "#fff",
     paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
     borderRadius: 20,
     marginBottom: 7,
     borderWidth: 1,

@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BasePage from "../components/BasePage";
-import Btn from "../components/Btn";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import BasePage from "@/components/BasePage";
+import Btn from "@/components/Btn";
+import TextFont from '@/components/TextFont';
 
 export default function Profile() {
     const user = {
@@ -13,22 +14,22 @@ export default function Profile() {
         <BasePage title="Perfil" subtitle="Gerencie suas informações">
             <View style={styles.card}>
                 <Image
-                    source={require('../assets/empada.jpeg')}
+                    source={require('@/assets/empada.jpeg')}
                     style={styles.image}
                 />
 
-                <Text style={styles.title}>{user.nome}</Text>
-                <Text style={styles.email}>{user.email}</Text>
-                <Text style={styles.fatec}>{user.fatec}</Text>
+                <TextFont style={styles.title}>{user.nome}</TextFont>
+                <TextFont style={styles.email}>{user.email}</TextFont>
+                <TextFont style={styles.fatec}>{user.fatec}</TextFont>
             </View>
             <View style={styles.options}>
                 <Btn variant="cyan">Editar Perfil</Btn>
                 <Btn variant="red">Sair</Btn>
                 <TouchableOpacity>
-                    <Text style={styles.link}>Excluir Conta</Text>
+                    <TextFont style={styles.link}>Excluir Conta</TextFont>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.link}>Relatar um Problema</Text>
+                    <TextFont style={styles.link}>Relatar um Problema</TextFont>
                 </TouchableOpacity>
             </View>
         </BasePage>
@@ -60,20 +61,19 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
-        fontWeight: 'bold',
+        fontFamily: 'Roboto_700Bold',
         marginBottom: 5,
         textAlign: 'center',
     },
     email: {
         fontSize: 16,
         marginBottom: 10,
-        fontWeight: '300',
         textDecorationLine: 'underline',
     },
     fatec: {
         fontSize: 16,
         marginBottom: 10,
-        fontWeight: '400',
+        fontFamily: 'Roboto_400Regular',
     },
     options: {
         gap: 8,

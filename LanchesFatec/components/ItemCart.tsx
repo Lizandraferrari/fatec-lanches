@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import TextFont from '@/components/TextFont';
 
 interface ItemCartProps {
   nome: string;
@@ -39,27 +40,27 @@ export default function ItemCart({ nome, preco, imagemUrl, onRemove, quantity, o
           <Ionicons name="close" size={18} color="#000" />
         </TouchableOpacity>
 
-        <Text style={styles.title}>{nome}</Text>
+        <TextFont style={styles.title}>{nome}</TextFont>
 
         <View style={styles.quantityContainer}>
-          <Text style={styles.quantityLabel}>Quantidade:</Text>
+          <TextFont style={styles.quantityLabel}>Quantidade:</TextFont>
 
           <View style={styles.quantityRow}>
             <TouchableOpacity onPress={decreaseQuantity} style={[styles.quantityButton, { paddingHorizontal: 10 }]}
             >
-              <Text style={styles.quantityButtonText}>−</Text>
+              <TextFont style={styles.quantityButtonText}>−</TextFont>
             </TouchableOpacity>
-            <Text style={styles.quantityText}>{qty}</Text>
+            <TextFont style={styles.quantityText}>{qty}</TextFont>
             <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>＋</Text>
+              <TextFont style={styles.quantityButtonText}>＋</TextFont>
             </TouchableOpacity>
           </View>
         </View>
 
 
-        <Text style={styles.total}>
+        <TextFont style={styles.total}>
           Total: R$ {(preco * qty).toFixed(2).replace('.', ',')}
-        </Text>
+        </TextFont>
       </View>
     </View>
   );
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 5,
     elevation: 4,
-
   },
   image: {
     width: 100,
@@ -101,14 +101,13 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 20,
     marginBottom: 2,
     textAlign: 'center',
   },
   quantityLabel: {
-    fontSize: 12,
-    fontWeight: 'thin',
+    fontSize: 14,
   },
   quantityContainer: {
     alignItems: 'center',
@@ -139,8 +138,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   total: {
-    fontWeight: 'bold',
-    fontSize: 13,
+    fontFamily: 'Roboto_700Bold',
+    fontSize: 14,
     marginTop: 4,
   },
 });

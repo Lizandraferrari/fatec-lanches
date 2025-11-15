@@ -1,4 +1,5 @@
-import { View , StyleSheet , Text} from 'react-native'
+import { View , StyleSheet } from 'react-native'
+import TextFont from '@/components/TextFont';
 
 interface TitleHeaderTypes {
     title: string,
@@ -8,8 +9,8 @@ interface TitleHeaderTypes {
 export default function TitleHeader( { title , subtitle }: TitleHeaderTypes ){
     return (
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>{title}</Text>
-      {subtitle && <Text style={styles.headerSubtitle}>{subtitle}</Text>}
+        <TextFont style={styles.headerTitle}>{title}</TextFont>
+      {subtitle && <TextFont style={styles.headerSubtitle}>{subtitle}</TextFont>}
       </View>
     )
 }
@@ -30,11 +31,12 @@ const styles = StyleSheet.create({
     headerTitle: {
         color: '#005C6D',
         fontSize: 36,
-        fontWeight: 'bold',
+        fontFamily: 'Roboto_700Bold',
     },
     headerSubtitle: {
         color: '#000',
         fontSize: 20,
+                fontFamily: 'Roboto_400Regular',
         marginTop: 2,
     },
 })

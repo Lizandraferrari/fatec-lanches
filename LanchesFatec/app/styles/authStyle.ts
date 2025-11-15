@@ -24,7 +24,6 @@ export default StyleSheet.create({
   headerTitle: {
     color: '#fff',
     fontSize: 32,
-    fontWeight: 'bold',
   },
   headerSubtitle: {
     color: '#fff',
@@ -37,17 +36,20 @@ export default StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 36,
     marginVertical: 30,
     color: '#005C6D',
+    fontFamily: 'Roboto_700Bold',
+
   },
   label: {
     fontSize: 16,
     alignSelf: 'flex-start',
-    marginBottom: 10,
+    fontFamily: 'Roboto_400Regular',
+    marginBottom: 16,
   },
   link: {
+    marginTop: 20,
     color: '#0000EE',
     textDecorationLine: 'underline',
   },
