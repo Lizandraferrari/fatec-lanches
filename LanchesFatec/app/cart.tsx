@@ -7,12 +7,16 @@ import Seletor from "@/components/Seletor";
 import BlueBtn from "@/components/Btn";
 import { Produto } from "@/components/types/produto";
 import TextFont from '@/components/TextFont';
+import { useRouter } from "expo-router";
 
 const CART_KEY = '@fatec-lanches:cart';
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState<Produto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [pagamento, setPagamento] = useState<'Pix' | 'Cartão de Crédito'>('Pix');
+
+  const router = useRouter()
 
   async function loadCart() {
     try {
@@ -73,6 +77,13 @@ export default function Cart() {
     }, 0);
   }, [cartItems]);
 
+function finalizarPedido() {
+  if (pagamento === 'Pix') {
+    router.push('/pixPayment');
+  } else {
+    router.push('/cardPayment');
+  }
+}
   return (
     <BasePage title="Carrinho" subtitle="Verifique seu Pedido">
       <View style={{ flex: 1 }}>
@@ -102,9 +113,9 @@ export default function Cart() {
         <View style={styles.info}>
       <TextFont style={styles.sumPrice}>Total: R$ {total.toFixed(2).replace('.', ',')}</TextFont>
 
-      <Seletor style={{marginHorizontal: 28}} label="Método de Pagamento:" options={['Pix', 'Cartão de Crédito']} />
+      <Seletor style={{marginHorizontal: 28}} label="Método de Pagamento:" options={['Pix', 'Cartão de Crédito']} onChange={(value) => setPagamento(value)}/>
 
-      <BlueBtn onPress={() => { console.log(cartItems) }}>
+      <BlueBtn onPress={finalizarPedido}>
         Finalizar Pedido
       </BlueBtn>
       </View>

@@ -16,11 +16,12 @@ interface CategoriesBaseProps {
 export default function CategoriesBase({ title, subtitle, categoria }: CategoriesBaseProps) {
   const [item, setItem] = useState<Produto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [ordem, setOrdem] = useState<'asc' | 'desc'>('asc');
 
   async function fetchItems() {
     try {
       setLoading(true);
-      const response = await api.get(`/api/produtos?categoria=${categoria}`);
+      const response = await api.get(`/api/produtos?categoria=${categoria}&ordem=${ordem}`);
       setItem(response.data);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -31,7 +32,7 @@ export default function CategoriesBase({ title, subtitle, categoria }: Categorie
 
   useEffect(() => {
     fetchItems();
-  }, [categoria]);
+  }, [categoria, ordem]);
 
   return (
     <BasePage title={title} subtitle={subtitle}>
@@ -41,7 +42,10 @@ export default function CategoriesBase({ title, subtitle, categoria }: Categorie
         <TextFont style={styles.emptyText}>Nenhum item encontrado</TextFont>
       ) : (
         <View>
-          <Seletor label={'Ordenar Por: '} options={['Menor Preço']} />
+          <Seletor label={'Ordenar Por: '} options={['Menor Preço', 'Maior Preço']} onChange={(value) => {
+            if (value === 'Maior Preço') setOrdem('desc');
+            else setOrdem('asc');
+          }} />
           <FlatList
             data={item}
             keyExtractor={(item) => item._id}
