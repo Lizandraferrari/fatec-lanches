@@ -1,4 +1,4 @@
-import { View, StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ActivityIndicator, TouchableOpacity, Alert } from "react-native";
 import TitleHeader from "./TitleHeader";
 import NavBar from "./NavBar";
 import * as SecureStore from 'expo-secure-store';
@@ -6,6 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
 import TextFont from '@/components/TextFont';
+import api from "@/utils/api";
 
 interface BasePageProps {
   title: string
@@ -21,12 +22,23 @@ export default function BasePage({ title, subtitle, children }: BasePageProps) {
     try {
       const token = await SecureStore.getItemAsync('token');
       if (!token) return false;
+      const response = await api.get('/auth/token', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+      
+      if(response.data?.mensagem != 'Ok') {
+        await SecureStore.deleteItemAsync('token');
+        return false
+      }
 
       const decoded = jwtDecode(token);
       const expirationTime = decoded.exp * 1000;
       const isExpired = Date.now() > expirationTime;
 
       if (isExpired) {
+        Alert.alert('Realize novamente o Login')
         await SecureStore.deleteItemAsync('token');
         return false;
       }
