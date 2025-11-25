@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import Btn from './Btn';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import TextFont from '@/components/TextFont';
+import useCart from '@/hooks/useCart';
+import { Produto } from './types/produto';
 
 interface ItemCardProps {
   quantity?: number;
@@ -14,12 +15,10 @@ interface ItemCardProps {
 
 export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps) {
   const [quantity, setQuantity] = useState<number>(0);
-  const CART = '@fatec-lanches:cart';
+  const { addItem } = useCart();
 
-  const increaseQuantity = () => setQuantity(quantity + 1);
-  const decreaseQuantity = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
-  };
+  const increaseQuantity = () => setQuantity((q) => q + 1);
+  const decreaseQuantity = () => setQuantity((q) => (q > 0 ? q - 1 : 0));
 
   async function addCart() {
     if (quantity <= 0) {
@@ -27,45 +26,28 @@ export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps)
       return;
     }
 
-    const itemToAdd: ItemCardProps = {
+    const itemToAdd: Produto = {
       _id,
       imagemUrl,
       preco,
       nome,
       quantity,
-    }
+    };
 
     try {
-      const raw = await AsyncStorage.getItem(CART)
-      const item = raw ? JSON.parse(raw) as Array<any> : []
-
-      const itemSearch = item.findIndex((i: any) => i._id === _id)
-      if (itemSearch >= 0) {
-        item[itemSearch].quantity = (item[itemSearch].quantity || 0) + quantity
-      } else {
-        item.push(itemToAdd);
-      }
-
-      await AsyncStorage.setItem(CART, JSON.stringify(item));
-      setQuantity(0)
-      //console.log('/nCarrinho: ', item,'/n')
-      Alert.alert('Sucesso', 'Item adicionado ao carrinho.')
+      await addItem(itemToAdd);
+      setQuantity(0);
+      Alert.alert('Sucesso', 'Item adicionado ao carrinho.');
     } catch (error) {
-      console.log('erro ao add:', error)
-      Alert.alert('Erro', 'Não foi possível adicionar ao carrinho.')
+      console.log('erro ao add via hook:', error);
+      Alert.alert('Erro', 'Não foi possível adicionar ao carrinho.');
     }
   }
-  /*
-  async function clearCart() {
-    const raw = await AsyncStorage.getItem(CART)
-    const item = raw ? JSON.parse(raw) as Array<any> : []
-    await AsyncStorage.removeItem('CART')
-  }
-*/
+
   return (
-    <View style={styles.card} key={_id}>
+    <View style={styles.card}>
       <Image
-        source={{ uri: imagemUrl }}
+        source={imagemUrl ? { uri: imagemUrl } : require('../assets/empada.jpeg')}
         style={styles.image}
       />
 
@@ -74,7 +56,7 @@ export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps)
       <View style={styles.line}>
         <TextFont style={styles.price}>R$ {preco.toFixed(2).replace('.', ',')}</TextFont>
 
-        <View style={{alignItems:'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <TextFont>Quantidade:</TextFont>
           <View style={styles.quantityContainer}>
             <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>

@@ -19,7 +19,7 @@ export default function ProfileCard({
         source={
           profileImage
             ? { uri: profileImage }
-            : require('@/assets/empada.jpeg')
+            : { uri: 'https://cdn-icons-png.flaticon.com/512/3106/3106921.png'}
         }
         style={styles.image}
       />
