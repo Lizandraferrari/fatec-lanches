@@ -125,6 +125,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 4,
+    boxShadow: '0px 2px 3px rgba(0,0,0,0.2)',
+
   },
   quantityButtonText: {
     fontSize: 16,
@@ -136,6 +138,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     fontSize: 14,
     backgroundColor: '#fff',
+    elevation: 5
   },
   total: {
     fontFamily: 'Roboto_700Bold',

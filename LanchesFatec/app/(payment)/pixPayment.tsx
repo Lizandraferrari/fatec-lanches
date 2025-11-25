@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F0F0F0',
     borderRadius: 10,
+    boxShadow: 'inset 0px 0px 10px rgba(0,0,0,0.5)',
   },
   line: {
     display: 'flex',

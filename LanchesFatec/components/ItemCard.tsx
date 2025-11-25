@@ -124,11 +124,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     backgroundColor: '#DDD',
+    boxShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+
   },
   buttonText: {
     fontSize: 18,
     color: '#333',
     fontFamily: 'Roboto_700Bold',
+
   },
   quantity: {
     fontSize: 16,
@@ -136,6 +139,7 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
     paddingHorizontal: 10,
     margin: 0,
+    elevation: 5
   },
 });
 
