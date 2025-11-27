@@ -4,7 +4,6 @@ import { useRouter } from 'expo-router';
 import Input from '@/components/Input';
 import BlueBtn from '@/components/Btn';
 import styles from '../styles/authStyle';
-import NavBar from '@/components/NavBar';
 import api from '@/utils/api';
 import * as SecureStore from 'expo-secure-store';
 import TextFont from '@/components/TextFont';
@@ -59,7 +58,11 @@ export default function LoginRoute() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('@/assets/logofatec.png')} />
+        <Image
+          source={require('@/assets/icon/logo_fatec_br.png')}
+          style={styles.headerLogo}
+          resizeMode="contain"
+        />
       </View>
 
       <View style={styles.content}>
@@ -76,7 +79,6 @@ export default function LoginRoute() {
           <TextFont style={styles.link}>Faça seu cadastro</TextFont>
         </TouchableOpacity>
       </View>
-      <NavBar />
     </View>
   );
 }

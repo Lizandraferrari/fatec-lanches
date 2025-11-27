@@ -66,7 +66,11 @@ export default function RegisterRoute() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('@/assets/logofatec.png')} />
+        <Image
+          source={require('@/assets/icon/logo_fatec_br.png')}
+          style={styles.headerLogo}
+          resizeMode="contain"
+        />      
       </View>
 
       <View style={styles.content}>

@@ -9,9 +9,10 @@ export default StyleSheet.create({
   },
   header: {
     backgroundColor: '#b00000',
-    alignItems: 'flex-start',
-    paddingHorizontal: 20,
-    justifyContent: 'center',
+    flexDirection: 'row',      
+    alignItems: 'center',       
+    justifyContent: 'flex-start', 
+    paddingHorizontal: 12,
     paddingVertical: 25,
     marginHorizontal: 0,
     height: 80,
@@ -29,6 +30,12 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 12,
     marginTop: 2,
+  },
+  headerLogo: {
+    width: 120,
+    height: 120,
+    marginTop: 12,
+    marginRight: 12,     
   },
   content: {
     flex: 1,

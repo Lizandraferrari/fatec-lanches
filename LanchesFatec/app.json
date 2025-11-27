@@ -4,7 +4,7 @@
     "slug": "LanchesFatec",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/empada.jpeg",
+    "icon": "./assets/icon/logo_fatec_lanches.png",
     "scheme": "lanchesfatec",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -14,9 +14,9 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#f0f0f0",
-        "foregroundImage": "./assets/empada.jpeg",
-        "backgroundImage": "./assets/empada.jpeg",
-        "monochromeImage": "./assets/empada.jpeg"
+        "foregroundImage": "./assets/icon/logo_fatec_lanches.png",
+        "backgroundImage": "./assets/icon/logo_fatec_lanches.png",
+        "monochromeImage": "./assets/icon/logo_fatec_lanches.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
@@ -24,14 +24,14 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/empada.jpeg"
+      "favicon": "./assets/icon/logo_fatec_lanches.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/empada.jpeg",
+          "image": "./assets/icon/logo_fatec_lanches.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",

@@ -47,7 +47,7 @@ export default function ItemCard({ nome, preco, _id, imagemUrl }: ItemCardProps)
   return (
     <View style={styles.card}>
       <Image
-        source={imagemUrl ? { uri: imagemUrl } : require('../assets/empada.jpeg')}
+        source={imagemUrl ? { uri: imagemUrl } : require('../assets//icon/logo_fatec_br.png')}
         style={styles.image}
       />
 
