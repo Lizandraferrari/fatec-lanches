@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { View, StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet } from 'react-native';
 import { useFonts, Roboto_300Light, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 
 export default function RootLayout() {
@@ -14,9 +14,9 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <View style={styles.fullscreen}>
+      <SafeAreaView style={styles.fullscreen}>
         <Stack screenOptions={{ headerShown: false }} />
-      </View>
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import Input from '@/components/Input';
 import BlueBtn from '@/components/Btn';
@@ -12,9 +12,10 @@ export default function LoginRoute() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function saveToken(token: string) {
-    await SecureStore.setItemAsync('token' , token)
+    await SecureStore.setItemAsync('token', token)
   }
 
   const onChangePasswordHandler = (password: string) => {
@@ -31,27 +32,28 @@ export default function LoginRoute() {
       return;
     }
 
+    setLoading(true);
     try {
       const response = await api.post('/usuarios/login', {
         email: email,
         senha: password
-      })
+      });
 
       if (response.status === 200) {
-        const token = response.data.token
-        saveToken(token)
-        router.replace('/menu');
-      }
-      else if (response.status === 404 || response.status === 401) {
+        const token = response.data.token;
+        await saveToken(token);
+        router.replace('/menu')
+
+      } else if (response.status === 404 || response.status === 401) {
         Alert.alert('Erro', 'Email ou senha incorretos.');
       } else {
         Alert.alert('Erro', 'Não foi possível realizar o login.');
       }
-
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       Alert.alert('Erro', 'Não foi possível realizar o login.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -78,6 +80,10 @@ export default function LoginRoute() {
         <TouchableOpacity onPress={() => router.push('/register')}>
           <TextFont style={styles.link}>Faça seu cadastro</TextFont>
         </TouchableOpacity>
+        {loading ? (
+          <ActivityIndicator size="large" color="#B20000" style={{marginTop: 15}} />
+        ) : null
+        }
       </View>
     </View>
   );

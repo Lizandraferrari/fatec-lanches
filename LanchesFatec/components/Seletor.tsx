@@ -7,19 +7,12 @@ import TextFont from '@/components/TextFont';
 interface SeletorProps {
   label: string;
   options: string[];
-  defaultValue?: string;
-  onChange?: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
   style?: any; 
 }
 
-export default function Seletor({ label, options, defaultValue, onChange, style }: SeletorProps) {
-  const [selected, setSelected] = useState(defaultValue || options[0] || '');
-
-  const handleChange = (value: string) => {
-    setSelected(value);
-    if (onChange) onChange(value);
-  };
-
+export default function Seletor({ label, options, onChange, style , value }: SeletorProps) {
   const items = options.map((option) => ({ label: option, value: option }));
 
   return (
@@ -28,9 +21,9 @@ export default function Seletor({ label, options, defaultValue, onChange, style 
 
       <View style={styles.pickerWrapper}>
         <RNPickerSelect
-          onValueChange={handleChange}
+          onValueChange={onChange}
           items={items}
-          value={selected}
+          value={value}
           useNativeAndroidPickerStyle={false}
           Icon={() => <Ionicons name="chevron-down" size={20} color="gray" />}
           style={{

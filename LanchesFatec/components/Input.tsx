@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     borderWidth: 1,
     borderColor: "#b2b2b2",
+    color: '#000'
   },
 });

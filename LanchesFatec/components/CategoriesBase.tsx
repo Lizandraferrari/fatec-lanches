@@ -42,10 +42,14 @@ export default function CategoriesBase({ title, subtitle, categoria }: Categorie
         <TextFont style={styles.emptyText}>Nenhum item encontrado</TextFont>
       ) : (
         <View>
-          <Seletor label={'Ordenar Por: '} options={['Menor Preço', 'Maior Preço']} onChange={(value) => {
-            if (value === 'Maior Preço') setOrdem('desc');
-            else setOrdem('asc');
-          }} />
+          <Seletor label={'Ordenar Por: '} options={['Menor Preço', 'Maior Preço']} 
+            value={ordem === 'asc' ? 'Menor Preço' : 'Maior Preço'}
+            onChange={(value) => {
+              if (value === 'Maior Preço') setOrdem('desc');
+              else setOrdem('asc');
+            }}
+          />
+
           <FlatList
             data={item}
             keyExtractor={(item) => item._id}
